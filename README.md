@@ -21,4 +21,5 @@ python manage.py migrate
 Run API:
 ```sh
 python manage.py runserver
+Go to http://localhost:8080/book/
 ```
