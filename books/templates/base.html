@@ -1,0 +1,16 @@
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Book of 2019</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Dawning+of+a+New+Day|Fondamento&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'books/css/main.css' %}" type="text/css">
+    <script type="text/javascript" src="{% static 'books/js/app.js' %}"></script>
+</head>
+<body>
+    {% block body %}
+    {% endblock %}
+</body>
+</html>
