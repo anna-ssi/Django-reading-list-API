@@ -11,7 +11,7 @@ pip install -r requirements.txt
 Copy .env.example to .env and fill in necessary fields
 ```
 
-Db
+Database
 ```sh
 python manage.py makemigrations books
 
@@ -21,4 +21,14 @@ python manage.py migrate
 Run API:
 ```sh
 python manage.py runserver
+```
+
+Elasticsearch:
+```sh
+python manage.py search_index --rebuild
+```
+
+To use elasticsearch go to ulr:
+```sh
+{{domain}}/book/search
 ```

@@ -1,60 +1,29 @@
 {% extends 'base.html' %}
 {% block body %}
 <div class="header">
-    <p class="headerInput">Book of 2019!</p>
+    <p class="headerInput">Book from goodreads</p>
 </div>
 <div>
-    <div class="readLayer">
-        <p class="layerInput">Books I've already read</p>
-    </div>
     <div class="readLayerInput">
         <table class="readLayerTable">
             <tr>
                 <th>Title</th>
-                <th>Started Date</th>
-                <th>Finished Date</th>
-                <th>Rating</th>
-                <th>Review</th>
+                <th>Description</th>
+                <th>Author</th>
+                <th>Number of Pages</th>
+                <th>Goodreads Rating</th>
+                <th>Rating Count</th>
+                <th>Review Count</th>
             </tr>
-            {% for book in read %}
+            {% for book in data %}
             <tr>
                 <td>{{ book.title }}</td>
-                <td>{{ book.started_date|default_if_none:"" }}</td>
-                <td>{{ book.finished_date|default_if_none:"" }}</td>
+                <td>{{ book.description|default_if_none:"" }}</td>
+                <td>{{ book.author|default_if_none:"" }}</td>
+                <td>{{ book.page|default_if_none:"" }}</td>
                 <td>{{ book.rating|default_if_none:""  }}</td>
-                <td>{{ book.review|default_if_none:"" }}</td>
-            </tr>
-            {% endfor %}
-        </table>
-    </div>
-    <div class="currentLayer">
-        <p class="layerInput">Books I'm currently reading</p>
-    </div>
-    <div class="toReadLayer">
-        <p class="layerInput">Books I plan to read.</p>
-    </div>
-    <div class="currentLayerInput">
-        <table class="readLayerTable">
-            <tr>
-                <th>Title</th>
-                <th>Started Date</th>
-            </tr>
-            {% for book in current %}
-            <tr>
-                <td>{{ book.title }}</td>
-                <td>{{ book.started_date }}</td>
-            </tr>
-            {% endfor %}
-        </table>
-    </div>
-    <div class="toReadLayerInput">
-        <table class="readLayerTable">
-            <tr>
-                <th>Title</th>
-            </tr>
-            {% for book in tbr %}
-            <tr>
-                <td>{{ book.title }}</td>
+                <td>{{ book.rating_count|default_if_none:"" }}</td>
+                <td>{{ book.review_count|default_if_none:"" }}</td>
             </tr>
             {% endfor %}
         </table>
@@ -65,7 +34,7 @@
         <form class="form-container" method="POST">
             {% csrf_token %}
             {{ form.as_p }}
-            <button type="submit" class="btn">Add</button>
+            <button type="submit" class="btn">Render</button>
             <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
         </form>
     </div>

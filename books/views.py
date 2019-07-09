@@ -1,8 +1,9 @@
-from django.db.models import Q
 from django.shortcuts import redirect
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
+from elasticsearch_dsl.query import MultiMatch
 
+from .documents import BookDocument
 from .forms import BookCreateForm
 from .models import Book
 
@@ -17,7 +18,16 @@ def home(request):
             form.save()
         return redirect('/book')
 
-    tbr = Book.objects.filter(read=False, started_date=None).values()
-    read = Book.objects.filter(read=True).values()
-    current = Book.objects.filter(~Q(started_date=None), read=False).values()
-    return render(request, 'books/index.html', {'tbr': tbr, 'read': read, 'current': current, 'form': form})
+    data = Book.objects.all().values()
+    return render(request, 'books/index.html', {'data': data, 'form': form})
+
+
+def search(request):
+    q = request.GET.get('q')
+
+    if q:
+        posts = BookDocument.search().query(MultiMatch(query=q, fields=['title', 'description', 'author']))
+    else:
+        posts = ''
+
+    return render(request, 'search/search.html', {'posts': posts})

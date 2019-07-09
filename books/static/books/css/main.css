@@ -37,8 +37,8 @@ p {
 }
 
 /* Full-width input fields */
-.form-container input[type=text], .form-container input[type=date], .form-container input[type=number] {
-  width: 100%;
+.form-container input[type=text]{
+  width: 300px;
   padding: 10px;
   margin: 5px 0 5px 0;
   border: none;
@@ -58,7 +58,7 @@ p {
     padding: 15px 25px;
     border: none;
     cursor: pointer;
-    width: 45%;
+    width: 40%;
     margin-bottom: 10px;
     margin-left: 15px;
     opacity: 0.8;
@@ -165,7 +165,7 @@ th:last-child {
 
 tr {
   border-top: 1px solid #C1C3D1;
-  border-bottom-: 1px solid #C1C3D1;
+  border-bottom: 1px solid #C1C3D1;
   color:#666B85;
   font-size:16px;
   font-weight:normal;
