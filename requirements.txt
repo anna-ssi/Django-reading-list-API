@@ -2,7 +2,7 @@ environ==1.0
 beautifulsoup4==4.6.0
 requests
 elasticsearch==6.4.0
-django==2.1.11
+django==2.2.10
 psycopg2==2.7.6.1
 psycopg2-binary==2.7.5
 django_elasticsearch_dsl==0.5.1
